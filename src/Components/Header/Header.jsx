@@ -1,7 +1,27 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { CiMenuBurger } from "react-icons/ci";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Header = () => {
+  const { logOut, user, loading } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "LogOut Successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+
+        navigate("/");
+      })
+      .catch();
+  };
   const links = (
     <>
       <li>
@@ -58,15 +78,40 @@ const Header = () => {
           <ul className="menu menu-horizontal gap-2 px-1">{links}</ul>
         </div>
         <div className="navbar-end gap-2">
-          <NavLink
-            to="/login"
-            className="btn  bg-stone-500 hover:bg-stone-600 text-white"
-          >
-            Login
-          </NavLink>
-          <NavLink to="/signup" className="btn">
-            SignUp
-          </NavLink>
+          {loading && (
+            <span className="loading loading-ring -translate-x-16 loading-lg"></span>
+          )}
+          {!user ? (
+            <>
+              {!loading && (
+                <>
+                  <NavLink
+                    to="/login"
+                    className="btn  bg-stone-500 hover:bg-stone-600 text-white"
+                  >
+                    Login
+                  </NavLink>
+                  <NavLink to="/signup" className="btn">
+                    SignUp
+                  </NavLink>
+                </>
+              )}
+            </>
+          ) : (
+            <>
+              <div
+                className="avatar cursor-pointer tooltip tooltip-left"
+                data-tip={user.displayName}
+              >
+                <div className="w-12 rounded-xl">
+                  <img src={user.photoURL} />
+                </div>
+              </div>
+              <button onClick={handleLogOut} className="btn">
+                Logout
+              </button>
+            </>
+          )}
         </div>
       </div>
     </div>

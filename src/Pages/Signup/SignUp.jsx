@@ -41,8 +41,11 @@ const SignUp = () => {
     createUser(email, password)
       .then((result) => {
         Swal.fire({
+          position: "top-end",
           icon: "success",
           title: "SignUp Successful",
+          showConfirmButton: false,
+          timer: 1500,
         });
         updateProfile(result.user, {
           displayName: name,
@@ -56,9 +59,11 @@ const SignUp = () => {
       })
       .catch((error) => {
         Swal.fire({
+          position: "top-end",
           icon: "error",
-          title: "Oops...",
-          text: error.message,
+          title: error.message,
+          showConfirmButton: false,
+          timer: 1500,
         });
       });
   };

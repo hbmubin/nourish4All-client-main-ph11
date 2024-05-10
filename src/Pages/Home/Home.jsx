@@ -4,7 +4,6 @@ import { AuthContext } from "../../Provider/AuthProvider";
 
 const Home = () => {
   const { user } = useContext(AuthContext);
-  console.log(user);
   return (
     <div>
       <Slider></Slider>
