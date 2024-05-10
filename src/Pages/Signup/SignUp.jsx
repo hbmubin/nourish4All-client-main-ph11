@@ -1,11 +1,14 @@
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
+import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
 
 const SignUp = () => {
-  const { createUser, user } = useContext(AuthContext);
+  const { createUser, user, googleLogin, githubLogin } =
+    useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -66,6 +69,47 @@ const SignUp = () => {
           timer: 1500,
         });
       });
+  };
+
+  const handleGoogleLogin = () => {
+    if (user) {
+      Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "Already logged in",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+    googleLogin().then(() => {
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Login successful",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    });
+  };
+  const handleGithubLogin = () => {
+    if (user) {
+      Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "Already logged in",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+    githubLogin().then(() => {
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Login successful",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    });
   };
   return (
     <div>
@@ -130,14 +174,36 @@ const SignUp = () => {
               </div>
               <div className="text-sm">
                 Already have an account ?
-                <a
+                <Link
                   className="text-blue-600 font-semibold ml-1 underline"
                   href="/login"
                 >
                   Login
-                </a>
+                </Link>
               </div>
             </form>
+            <div>
+              <div className="flex justify-center items-center mb-2 gap-4 font-semibold">
+                <hr className="flex-1" />
+                <div>or</div>
+                <hr className="flex-1" />
+              </div>
+              <h2 className="text-center font-semibold">Sign in with</h2>
+              <div className="flex justify-center gap-6 my-4">
+                <button
+                  onClick={handleGoogleLogin}
+                  className="hover:scale-110 hover:bg-neutral-200 p-2 rounded-full duration-300"
+                >
+                  <FcGoogle size={35}></FcGoogle>
+                </button>
+                <button
+                  onClick={handleGithubLogin}
+                  className="hover:scale-110 hover:bg-neutral-200 p-2 px-3 rounded-full duration-300"
+                >
+                  <FaGithub size={30}></FaGithub>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

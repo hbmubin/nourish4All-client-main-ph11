@@ -2,9 +2,11 @@ import { useContext, useEffect } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
 
 const SignUp = () => {
-  const { loginUser, user } = useContext(AuthContext);
+  const { loginUser, user, googleLogin, githubLogin } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -20,7 +22,13 @@ const SignUp = () => {
     const password = e.target.password.value;
 
     if (user) {
-      alert("already login");
+      Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "Already logged in",
+        showConfirmButton: false,
+        timer: 1500,
+      });
       return;
     }
     loginUser(email, password)
@@ -33,6 +41,7 @@ const SignUp = () => {
           timer: 1500,
         });
         e.target.reset();
+        navigate(location?.state ? location.state : "/");
       })
       .catch(() => {
         Swal.fire({
@@ -43,6 +52,49 @@ const SignUp = () => {
           timer: 1500,
         });
       });
+  };
+
+  const handleGoogleLogin = () => {
+    if (user) {
+      Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "Already logged in",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+    googleLogin().then(() => {
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Login successful",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      navigate(location?.state ? location.state : "/");
+    });
+  };
+  const handleGithubLogin = () => {
+    if (user) {
+      Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "Already logged in",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+    githubLogin().then(() => {
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Login successful",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      navigate(location?.state ? location.state : "/");
+    });
   };
   return (
     <div>
@@ -91,6 +143,28 @@ const SignUp = () => {
                 </a>
               </div>
             </form>
+            <div>
+              <div className="flex justify-center items-center mb-2 gap-4 font-semibold">
+                <hr className="flex-1" />
+                <div>or</div>
+                <hr className="flex-1" />
+              </div>
+              <h2 className="text-center font-semibold">Sign in with</h2>
+              <div className="flex justify-center gap-6 my-4">
+                <button
+                  onClick={handleGoogleLogin}
+                  className="hover:scale-110 hover:bg-neutral-200 p-2 rounded-full duration-300"
+                >
+                  <FcGoogle size={35}></FcGoogle>
+                </button>
+                <button
+                  onClick={handleGithubLogin}
+                  className="hover:scale-110 hover:bg-neutral-200 p-2 px-3 rounded-full duration-300"
+                >
+                  <FaGithub size={30}></FaGithub>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
