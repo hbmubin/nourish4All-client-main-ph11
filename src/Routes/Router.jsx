@@ -7,6 +7,7 @@ import ManageMyFoods from "../Pages/ManageMyFoods/ManageMyFoods";
 import MyFoodRequest from "../Pages/MyFoodRequest/MyFoodRequest";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/Signup/SignUp";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -23,15 +24,28 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-food",
-        element: <AddFood></AddFood>,
+        element: (
+          <PrivateRoute>
+            <AddFood></AddFood>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/manage-my-foods",
-        element: <ManageMyFoods></ManageMyFoods>,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <ManageMyFoods></ManageMyFoods>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/my-food-request",
-        element: <MyFoodRequest></MyFoodRequest>,
+        element: (
+          <PrivateRoute>
+            <MyFoodRequest></MyFoodRequest>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",

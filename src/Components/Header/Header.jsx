@@ -5,27 +5,27 @@ const Header = () => {
   const links = (
     <>
       <li>
-        <NavLink className="font-semibold" to="/">
+        <NavLink className="font-semibold py-3" to="/">
           Home
         </NavLink>
       </li>
       <li>
-        <NavLink className="font-semibold" to="/available-foods">
+        <NavLink className="font-semibold py-3" to="/available-foods">
           Available Foods
         </NavLink>
       </li>
       <li>
-        <NavLink className="font-semibold" to="/add-food">
+        <NavLink className="font-semibold py-3" to="/add-food">
           Add Food
         </NavLink>
       </li>
       <li>
-        <NavLink className="font-semibold" to="/manage-my-foods">
+        <NavLink className="font-semibold py-3" to="/manage-my-foods">
           Manage My Foods
         </NavLink>
       </li>
       <li>
-        <NavLink className="font-semibold" to="/my-food-request">
+        <NavLink className="font-semibold py-3" to="/my-food-request">
           My Food Request
         </NavLink>
       </li>
@@ -60,7 +60,7 @@ const Header = () => {
         <div className="navbar-end gap-2">
           <NavLink
             to="/login"
-            className="btn bg-lime-600 hover:bg-lime-700 text-white"
+            className="btn  bg-stone-500 hover:bg-stone-600 text-white"
           >
             Login
           </NavLink>
