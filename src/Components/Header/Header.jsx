@@ -5,30 +5,40 @@ const Header = () => {
   const links = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink className="font-semibold" to="/">
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/available-foods"> Available Foods</NavLink>
+        <NavLink className="font-semibold" to="/available-foods">
+          Available Foods
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/add-food">Add Food</NavLink>
+        <NavLink className="font-semibold" to="/add-food">
+          Add Food
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/manage-my-foods">Manage My Foods</NavLink>
+        <NavLink className="font-semibold" to="/manage-my-foods">
+          Manage My Foods
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/my-food-request">My Food Request</NavLink>
+        <NavLink className="font-semibold" to="/my-food-request">
+          My Food Request
+        </NavLink>
       </li>
     </>
   );
 
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-100 py-6">
         <div className="navbar-start">
           <div className="dropdown z-50">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-              <CiMenuBurger />
+              <CiMenuBurger size={27} />
             </div>
             <ul
               tabIndex={0}
@@ -37,15 +47,26 @@ const Header = () => {
               {links}
             </ul>
           </div>
-          <a className="cursor-pointer text-2xl font-bold text-stone-700">
+          <a
+            href="/"
+            className="cursor-pointer text-3xl font-bold text-stone-700"
+          >
             Nourish<span className="  text-amber-600">4</span>All
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{links}</ul>
+          <ul className="menu menu-horizontal gap-2 px-1">{links}</ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Button</a>
+        <div className="navbar-end gap-2">
+          <NavLink
+            to="/login"
+            className="btn bg-lime-600 hover:bg-lime-700 text-white"
+          >
+            Login
+          </NavLink>
+          <NavLink to="/signup" className="btn">
+            SignUp
+          </NavLink>
         </div>
       </div>
     </div>
