@@ -4,9 +4,11 @@ import Footer from "../Components/Footer/Footer";
 
 const Layout = () => {
   return (
-    <div>
-      <Header></Header>
-      <Outlet></Outlet>
+    <div className="open">
+      <div className="max-w-[1380px] mx-auto">
+        <Header></Header>
+        <Outlet></Outlet>
+      </div>
       <Footer></Footer>
     </div>
   );
