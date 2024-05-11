@@ -8,11 +8,14 @@ import MyFoodRequest from "../Pages/MyFoodRequest/MyFoodRequest";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/Signup/SignUp";
 import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import FoodDetails from "../Pages/FoodDetails/FoodDetails";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout></Layout>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -34,7 +37,6 @@ const router = createBrowserRouter([
         path: "/manage-my-foods",
         element: (
           <PrivateRoute>
-            {" "}
             <ManageMyFoods></ManageMyFoods>
           </PrivateRoute>
         ),
@@ -46,6 +48,15 @@ const router = createBrowserRouter([
             <MyFoodRequest></MyFoodRequest>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/food-details/:id",
+        element: (
+          <PrivateRoute>
+            <FoodDetails></FoodDetails>
+          </PrivateRoute>
+        ),
+        loader: () => fetch("lo"),
       },
       {
         path: "/login",
