@@ -1,10 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Slider from "../../Components/Slider/Slider";
-import { AuthContext } from "../../Provider/AuthProvider";
 import Food from "../../Components/Food/Food";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-  const { user } = useContext(AuthContext);
   const [foods, setFoods] = useState([]);
 
   useEffect(() => {
@@ -20,6 +19,8 @@ const Home = () => {
       });
   }, []);
 
+  const limitedFoods = foods.slice(0, 6);
+
   return (
     <div>
       <Slider></Slider>
@@ -27,9 +28,14 @@ const Home = () => {
         <h2 className="text-4xl font-semibold">Featured Foods</h2>
       </div>
       <div className="grid grid-cols-3 gap-6 my-10">
-        {foods.map((food) => (
+        {limitedFoods.map((food) => (
           <Food food={food} key={food._id}></Food>
         ))}
+      </div>
+      <div className="text-center">
+        <Link to="/available-foods" className="btn">
+          Show all
+        </Link>
       </div>
     </div>
   );
