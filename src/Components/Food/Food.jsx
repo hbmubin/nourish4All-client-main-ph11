@@ -58,7 +58,7 @@ const Food = ({ food }) => {
             </div>
             <div>
               <Link
-                to={`/food-details/${_id}`}
+                to={`/food/${_id}`}
                 className="btn bg-amber-700 border-none text-white"
               >
                 Show Details
