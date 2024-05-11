@@ -12,13 +12,9 @@ const Food = ({ food }) => {
     donor,
     expiredDateTime,
     additionalNotes,
-    foodStatus,
     foodName,
   } = food;
-  const { donatorImage, name, email } = donor;
-
-  console.log(food);
-  console.log(donor);
+  const { donatorImage, name } = donor;
 
   return (
     <div className="shadow-sm border-[1px] bg-amber-300">
