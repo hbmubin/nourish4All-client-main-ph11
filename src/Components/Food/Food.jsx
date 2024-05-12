@@ -2,6 +2,7 @@ import { MdProductionQuantityLimits } from "react-icons/md";
 import { CiLocationOn } from "react-icons/ci";
 import { CiCalendarDate } from "react-icons/ci";
 import { Link } from "react-router-dom";
+import "../Food/food.css";
 
 const Food = ({ food }) => {
   const {
@@ -47,8 +48,11 @@ const Food = ({ food }) => {
           <div className="font-semibold text-neutral-700">Donor</div>
           <div className="flex justify-between items-center ">
             <div className="flex items-center gap-4 bg-amber-200 py-2 px-4  ">
-              <div className="avatar rounded-full w-16">
-                <img src="https://i.ibb.co/DMmNXfs/rangamatijpeg.jpg" />
+              <div className=" w-16">
+                <img
+                  className="avatar"
+                  src="https://i.ibb.co/DMmNXfs/rangamatijpeg.jpg"
+                />
               </div>
               <div>{name}</div>
             </div>
