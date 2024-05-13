@@ -31,7 +31,7 @@ const AvailableFoods = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen text-center">
+      <div className="min-h-[80vh] text-center">
         <span className="loading loading-ring w-28"></span>
       </div>
     );
