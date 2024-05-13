@@ -10,6 +10,7 @@ const AvailableFoods = () => {
   const [rowStatus, setRowStatus] = useState(3);
   const [sortBy, setSortBy] = useState(false);
   const [search, setSearch] = useState("");
+
   useEffect(() => {
     fetch(
       `${

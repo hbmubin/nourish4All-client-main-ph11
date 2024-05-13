@@ -10,6 +10,7 @@ import SignUp from "../Pages/Signup/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import FoodDetails from "../Pages/FoodDetails/FoodDetails";
+import UpdateFood from "../Pages/UpdateFood/UpdateFood";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,12 @@ const router = createBrowserRouter([
       {
         path: "/food/:id",
         element: <FoodDetails></FoodDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/food/${params.id}`),
+      },
+      {
+        path: "/update-food/:id",
+        element: <UpdateFood></UpdateFood>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/food/${params.id}`),
       },
