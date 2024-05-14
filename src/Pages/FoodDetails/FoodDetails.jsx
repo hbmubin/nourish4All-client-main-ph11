@@ -1,9 +1,41 @@
+import { useContext, useState } from "react";
 import { CiCalendarDate, CiLocationOn } from "react-icons/ci";
 import { MdProductionQuantityLimits } from "react-icons/md";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const FoodDetails = () => {
+  const { user } = useContext(AuthContext);
   const food = useLoaderData();
+  const [request, setRequest] = useState(null);
+
+  const handleRequest = (e) => {
+    const form = e.target;
+    const additionalNotes = form.additionalNotes.value;
+    const foodStatus = "unavailable";
+    const requestedFood = { additionalNotes, foodStatus };
+    fetch(`http://localhost:5000/request/${food._id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(requestedFood),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        e.target.reset();
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            title: "Success!",
+            text: "Successfully Requested",
+            icon: "success",
+            confirmButtonText: "Ok",
+          });
+          setRequest(true);
+        }
+      });
+  };
   return (
     <div>
       <section className="dark:bg-amber-100 dark:text-gray-800">
@@ -15,7 +47,6 @@ const FoodDetails = () => {
           >
             <img
               src="https://source.unsplash.com/random/480x360"
-              alt=""
               className="object-cover w-full h-64 rounded sm:h-96 lg:col-span-7 dark:bg-gray-500"
             />
             <div className="p-6 lg:col-span-5 ">
@@ -34,31 +65,37 @@ const FoodDetails = () => {
                     document.getElementById("my_modal_5").showModal()
                   }
                   className="btn px-16 bg-amber-500"
+                  {...(request ? { disabled: true } : {})}
                 >
-                  Request
+                  {request ? "Requested" : "Request"}
                 </button>
                 <dialog
                   id="my_modal_5"
                   className="modal modal-bottom sm:modal-middle"
                 >
-                  <div className="modal-box bg-amber-200 border-4">
+                  <div className="modal-box max-h-screen bg-amber-200 border-4">
                     <h3 className="font-bold text-lg">Are you sure!</h3>
-                    <div className="modal-action">
-                      <form className=" w-full" method="dialog">
-                        <div className="p-4 flex flex-col font-semibold">
+                    <div className="modal-action mt-3">
+                      <form
+                        onSubmit={handleRequest}
+                        className=" w-full"
+                        method="dialog"
+                      >
+                        <div className=" flex flex-col font-semibold">
+                          <div className="border-2 w-[50%] mb-4">
+                            <img
+                              className=""
+                              src="https://source.unsplash.com/random/480x360"
+                            />
+                          </div>
                           <div className="text-2xl font-semibold">
                             {food.foodName}
                           </div>
-                          <p className="text-stone-600  mb-3">
-                            {food.additionalNotes}
-                          </p>
-
                           <div className="flex items-center mb-1">
                             <span>
                               <MdProductionQuantityLimits />
                             </span>
                             <div className="ml-1">
-                              {" "}
                               Quantity : {food.foodQuantity}
                             </div>
                           </div>
@@ -67,7 +104,6 @@ const FoodDetails = () => {
                               <CiLocationOn />
                             </span>
                             <div className="ml-1">
-                              {" "}
                               Pickup Location : {food.pickupLocation}
                             </div>
                           </div>
@@ -76,23 +112,46 @@ const FoodDetails = () => {
                               <CiCalendarDate />
                             </span>
                             <div className="ml-1">
-                              {" "}
                               Expired Date : {food.expiredDateTime}
                             </div>
                           </div>
-                          <div className=" ">
-                            <div className="font-semibold text-neutral-700">
-                              Donor
-                            </div>
-                            <div className="flex justify-between items-center ">
-                              <div className=" bg-amber-200 py-2 px-2  ">
+                          <div className="flex gap-2 p-2 text-sm  bg-amber-100 mt-2">
+                            <div>
+                              <div className="font-semibold text-neutral-700">
+                                Donor
+                              </div>
+                              <div className=" ">
                                 <div>{food.donor.name}</div>
                                 <div>{food.donor.email}</div>
                               </div>
                             </div>
+                            <div>
+                              <div className="font-semibold text-neutral-700">
+                                Benefactor
+                              </div>
+
+                              <div className=" ">
+                                <div>{user.displayName}</div>
+                                <div>{user.email}</div>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="form-control">
+                            <label className="label">
+                              <span className="label-text">
+                                Additional Notes
+                              </span>
+                            </label>
+                            <textarea
+                              name="additionalNotes"
+                              className="textarea textarea-bordered"
+                              defaultValue={food.additionalNotes}
+                            ></textarea>
                           </div>
                         </div>
-                        <button className="btn w-full">Confirm</button>
+                        <button className="btn bg-amber-400 hover:bg-amber-500 w-full mt-2">
+                          Confirm
+                        </button>
                       </form>
                     </div>
                   </div>
