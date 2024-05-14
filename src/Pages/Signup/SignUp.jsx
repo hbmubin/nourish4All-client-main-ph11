@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
+import { Helmet } from "react-helmet";
 
 const SignUp = () => {
   const { createUser, user, googleLogin, githubLogin } =
@@ -113,6 +114,9 @@ const SignUp = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>SignUp || Nourish4All</title>
+      </Helmet>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex flex-col">
           <h1 className="text-5xl font-bold mb-12">SignUp now!</h1>

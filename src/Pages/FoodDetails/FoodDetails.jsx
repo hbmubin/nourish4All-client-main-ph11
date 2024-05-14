@@ -4,6 +4,7 @@ import { MdProductionQuantityLimits } from "react-icons/md";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const FoodDetails = () => {
   const { user } = useContext(AuthContext);
@@ -52,6 +53,9 @@ const FoodDetails = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Food Details || Nourish4All</title>
+      </Helmet>
       <section className="dark:bg-amber-100 dark:text-gray-800">
         <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
           <a

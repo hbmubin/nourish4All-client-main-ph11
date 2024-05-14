@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const MyFoodRequest = () => {
   const { user } = useContext(AuthContext);
@@ -15,6 +16,9 @@ const MyFoodRequest = () => {
   console.log(myFoodRequest);
   return (
     <div>
+      <Helmet>
+        <title>Request Food || Nourish4All</title>
+      </Helmet>
       <div className="overflow-x-auto">
         <table className="table table-zebra">
           <thead>

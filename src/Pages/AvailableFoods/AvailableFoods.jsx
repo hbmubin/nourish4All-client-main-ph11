@@ -3,6 +3,8 @@ import Food from "../../Components/Food/Food";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import { HiMenu } from "react-icons/hi";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { motion } from "framer-motion";
+import { Helmet } from "react-helmet";
 
 const AvailableFoods = () => {
   const { loading } = useContext(AuthContext);
@@ -40,6 +42,9 @@ const AvailableFoods = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Available Food || Nourish4All</title>
+      </Helmet>
       <div className="text-center">
         <h2 className="text-3xl font-semibold">All available foods</h2>
       </div>
@@ -47,9 +52,14 @@ const AvailableFoods = () => {
       <div className="flex justify-between items-center mb-4">
         <div className=" ">
           <h2 className="font-semibold ml-3">Sort by</h2>
-          <div onClick={() => setSortBy(!sortBy)} className="btn">
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={() => setSortBy(!sortBy)}
+            className="btn"
+          >
             Expire date
-          </div>
+          </motion.button>
         </div>
         <div className="flex justify-center">
           <label className="input w-64 input-bordered flex items-center gap-2">
@@ -74,18 +84,24 @@ const AvailableFoods = () => {
           </label>
         </div>
         <div>
-          <button
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            animate={{ rotate: 90 }}
             onClick={() => setRowStatus(2)}
             className={`rotate-90 p-3 ${rowStatus == 2 && "bg-amber-500"}`}
           >
             <HiOutlineMenuAlt4 size={30} />
-          </button>
-          <button
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            animate={{ rotate: 90 }}
             onClick={() => setRowStatus(3)}
             className={`rotate-90 p-3 ${rowStatus == 3 && "bg-amber-500"}`}
           >
             <HiMenu size={30} />
-          </button>
+          </motion.button>
         </div>
       </div>
       <div

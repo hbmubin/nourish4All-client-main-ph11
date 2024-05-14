@@ -3,6 +3,9 @@ import { CiMenuBurger } from "react-icons/ci";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { motion } from "framer-motion";
+import Lottle from "lottie-react";
+import foodtop from "../../../public/foodtop.json";
 
 const Header = () => {
   const { logOut, user, loading } = useContext(AuthContext);
@@ -24,36 +27,40 @@ const Header = () => {
   };
   const links = (
     <>
-      <li>
+      <motion.li whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.9 }}>
         <NavLink className="font-semibold py-3" to="/">
           Home
         </NavLink>
-      </li>
-      <li>
+      </motion.li>
+      <motion.li whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.9 }}>
         <NavLink className="font-semibold py-3" to="/available-foods">
           Available Foods
         </NavLink>
-      </li>
-      <li>
+      </motion.li>
+      <motion.li whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.9 }}>
         <NavLink className="font-semibold py-3" to="/add-food">
           Add Food
         </NavLink>
-      </li>
-      <li>
+      </motion.li>
+      <motion.li whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.9 }}>
         <NavLink className="font-semibold py-3" to="/manage-my-foods">
           Manage My Foods
         </NavLink>
-      </li>
-      <li>
+      </motion.li>
+      <motion.li whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.9 }}>
         <NavLink className="font-semibold py-3" to="/my-food-request">
           My Food Request
         </NavLink>
-      </li>
+      </motion.li>
     </>
   );
 
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0, translateY: -20 }}
+      animate={{ opacity: 1, translateY: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <div className="navbar bg-base-100 py-6">
         <div className="navbar-start">
           <div className="dropdown z-50">
@@ -67,12 +74,19 @@ const Header = () => {
               {links}
             </ul>
           </div>
-          <a
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.9 }}
             href="/"
             className="cursor-pointer text-3xl font-bold text-stone-700"
           >
-            Nourish<span className="  text-amber-600">4</span>All
-          </a>
+            Nourish
+            <span className="  text-amber-600">4</span>
+            All
+          </motion.a>
+          <div className="w-12 mb-2">
+            <Lottle loop={true} animationData={foodtop} />
+          </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal gap-2 px-1">{links}</ul>
@@ -103,18 +117,29 @@ const Header = () => {
                 className="avatar cursor-pointer tooltip tooltip-left"
                 data-tip={user.displayName}
               >
-                <div className="w-12 rounded-xl">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  whileHover={{ scale: 1.1 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className="w-12 rounded-xl"
+                >
                   <img src={user.photoURL} />
-                </div>
+                </motion.div>
               </div>
-              <button onClick={handleLogOut} className="btn">
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={handleLogOut}
+                className="btn"
+              >
                 Logout
-              </button>
+              </motion.button>
             </>
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

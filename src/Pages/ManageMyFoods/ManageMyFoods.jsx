@@ -4,6 +4,7 @@ import { MdDeleteOutline } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const ManageMyFoods = () => {
   const { user } = useContext(AuthContext);
@@ -63,6 +64,9 @@ const ManageMyFoods = () => {
 
   return (
     <div className="min-h[80vh]">
+      <Helmet>
+        <title>Manage Food || Nourish4All</title>
+      </Helmet>
       <div className="overflow-x-auto">
         <table className="table table-zebra">
           <thead>

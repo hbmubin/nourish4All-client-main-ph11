@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import "../AddFood/addFood.css";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const AddFood = () => {
   const { user } = useContext(AuthContext);
@@ -71,6 +72,9 @@ const AddFood = () => {
 
   return (
     <div className="hero min-h-[80vh] bg-amber-100">
+      <Helmet>
+        <title>Add Food || Nourish4All</title>
+      </Helmet>
       <div className="p-6 bg-amber-200">
         <h2 className="text-center text-4xl font-semibold mb-6">Add Food</h2>
         <form onSubmit={handleAddFood} className="flex gap-8">

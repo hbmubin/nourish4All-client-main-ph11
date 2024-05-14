@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import Slider from "../../Components/Slider/Slider";
 import Food from "../../Components/Food/Food";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   const [foods, setFoods] = useState([]);
@@ -23,6 +25,9 @@ const Home = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Nourish4All</title>
+      </Helmet>
       <Slider></Slider>
       <div className="mt-16 text-center">
         <h2 className="text-4xl font-semibold">Featured Foods</h2>
@@ -32,11 +37,15 @@ const Home = () => {
           <Food food={food} key={food._id}></Food>
         ))}
       </div>
-      <div className="text-center">
+      <motion.div
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        className="text-center"
+      >
         <Link to="/available-foods" className="btn">
           Show all
         </Link>
-      </div>
+      </motion.div>
     </div>
   );
 };

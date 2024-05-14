@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const UpdateFood = () => {
   const { user, loading } = useContext(AuthContext);
@@ -54,6 +55,9 @@ const UpdateFood = () => {
 
   return (
     <div className="hero min-h-[80vh] bg-amber-100">
+      <Helmet>
+        <title>Update Food || Nourish4All</title>
+      </Helmet>
       <div className="p-6 bg-amber-200">
         <h2 className="text-center text-4xl font-semibold mb-6">Update Food</h2>
         <form onSubmit={handleUpdateFood} className="flex gap-8">

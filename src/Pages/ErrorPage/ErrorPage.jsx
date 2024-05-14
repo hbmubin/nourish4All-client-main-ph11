@@ -1,5 +1,6 @@
 import { useNavigate, useRouteError } from "react-router-dom";
 import { ImSad } from "react-icons/im";
+import { Helmet } from "react-helmet";
 
 const ErrorPage = () => {
   const navigate = useNavigate();
@@ -7,6 +8,9 @@ const ErrorPage = () => {
 
   return (
     <div className="h-screen flex items-center justify-center bg-amber-100">
+      <Helmet>
+        <title>Error || Nourish4All</title>
+      </Helmet>
       <div className="text-center flex items-center flex-col">
         <div className="text-stone-600">
           <ImSad size={80}></ImSad>

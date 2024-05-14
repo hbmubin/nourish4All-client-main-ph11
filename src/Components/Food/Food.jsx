@@ -3,6 +3,7 @@ import { CiLocationOn } from "react-icons/ci";
 import { CiCalendarDate } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import "../Food/food.css";
+import { motion } from "framer-motion";
 
 const Food = ({ food }) => {
   const {
@@ -18,7 +19,12 @@ const Food = ({ food }) => {
   const { donatorImage, name } = donor;
 
   return (
-    <div className="shadow-sm border-[1px] bg-amber-300">
+    <motion.div
+      initial={{ opacity: 0, translateY: -30 }}
+      animate={{ opacity: 1, translateY: 0 }}
+      transition={{ duration: 1 }}
+      className="shadow-sm border-[1px] bg-amber-300"
+    >
       <div className="">
         <img src="https://i.ibb.co/DMmNXfs/rangamatijpeg.jpg" />
       </div>
@@ -56,18 +62,18 @@ const Food = ({ food }) => {
               </div>
               <div>{name}</div>
             </div>
-            <div>
+            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
               <Link
                 to={`/food/${_id}`}
                 className="btn bg-amber-700 border-none text-white"
               >
                 Show Details
               </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

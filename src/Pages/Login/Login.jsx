@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
+import { Helmet } from "react-helmet";
 
 const SignUp = () => {
   const { loginUser, user, googleLogin, githubLogin } = useContext(AuthContext);
@@ -98,6 +99,9 @@ const SignUp = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Login || Nourish4All</title>
+      </Helmet>
       <div className="hero min-h-[80vh] bg-base-200">
         <div className="hero-content flex flex-col">
           <h1 className="text-5xl font-bold mb-12">Login now!</h1>
