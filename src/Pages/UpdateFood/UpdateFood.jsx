@@ -4,8 +4,15 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const UpdateFood = () => {
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
   const food = useLoaderData();
+  if (loading) {
+    return (
+      <div className="min-h-[80vh] text-center">
+        <span className="loading loading-ring w-28"></span>
+      </div>
+    );
+  }
 
   const handleUpdateFood = (e) => {
     e.preventDefault();

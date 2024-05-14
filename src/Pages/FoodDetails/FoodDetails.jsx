@@ -10,11 +10,25 @@ const FoodDetails = () => {
   const food = useLoaderData();
   const [request, setRequest] = useState(null);
 
+  const options = { day: "numeric", month: "long", year: "numeric" };
+  const formattedDate = new Intl.DateTimeFormat("en-GB", options).format(
+    new Date()
+  );
+
   const handleRequest = (e) => {
     const form = e.target;
     const additionalNotes = form.additionalNotes.value;
     const foodStatus = "unavailable";
-    const requestedFood = { additionalNotes, foodStatus };
+    const requestDate = formattedDate;
+    const benefactorName = user.displayName;
+    const benefactorEmail = user.email;
+    const requestedFood = {
+      additionalNotes,
+      foodStatus,
+      requestDate,
+      benefactorName,
+      benefactorEmail,
+    };
     fetch(`http://localhost:5000/request/${food._id}`, {
       method: "PATCH",
       headers: {

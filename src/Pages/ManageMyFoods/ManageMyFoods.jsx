@@ -7,8 +7,9 @@ import { Link } from "react-router-dom";
 
 const ManageMyFoods = () => {
   const { user } = useContext(AuthContext);
-  const [myFoods, setMyFoods] = useState([]);
   const { email } = user;
+
+  const [myFoods, setMyFoods] = useState([]);
 
   useEffect(() => {
     fetch(`http://localhost:5000/my-foods/${email}`)
