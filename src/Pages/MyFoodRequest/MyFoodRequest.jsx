@@ -13,7 +13,36 @@ const MyFoodRequest = () => {
   }, [email]);
 
   console.log(myFoodRequest);
-  return <div>MyFoodRequest</div>;
+  return (
+    <div>
+      <div className="overflow-x-auto">
+        <table className="table table-zebra">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Food Name</th>
+              <th>Donor Name</th>
+              <th>Pickup Location</th>
+              <th>Expire Date</th>
+              <th>Request Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {myFoodRequest.map((food, idx) => (
+              <tr key={food._id}>
+                <th>{idx + 1}</th>
+                <td>{food.foodName}</td>
+                <td>{food.donor.name}</td>
+                <td>{food.pickupLocation}</td>
+                <td>{food.expiredDateTime}</td>
+                <td>{food.requestDate}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 };
 
 export default MyFoodRequest;

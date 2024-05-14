@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 const ManageMyFoods = () => {
   const { user } = useContext(AuthContext);
   const { email } = user;
-
   const [myFoods, setMyFoods] = useState([]);
 
   useEffect(() => {

@@ -14,8 +14,6 @@ const AddFood = () => {
     return formattedDate;
   };
 
-  // console.log(formatDate(date));
-
   const handleDateChange = (e) => {
     const selectedDate = new Date(e.target.value);
     setDate(selectedDate);
