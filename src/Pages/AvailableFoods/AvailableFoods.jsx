@@ -49,7 +49,7 @@ const AvailableFoods = () => {
         <h2 className="text-3xl font-semibold">All available foods</h2>
       </div>
 
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex justify-between items-center mb-4 lg:mt-0 mt-6">
         <div className=" ">
           <h2 className="font-semibold ml-3">Sort by</h2>
           <motion.button
@@ -83,7 +83,7 @@ const AvailableFoods = () => {
             </svg>
           </label>
         </div>
-        <div>
+        <div className=" lg:block hidden">
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
@@ -105,8 +105,8 @@ const AvailableFoods = () => {
         </div>
       </div>
       <div
-        className={`grid mb-10 ${
-          rowStatus == 3 ? "grid-cols-3  gap-6" : "grid-cols-2  gap-12"
+        className={`grid md:grid-cols-2 mb-10 ${
+          rowStatus == 3 ? "lg:grid-cols-3  gap-6" : "lg:grid-cols-2  gap-12"
         }`}
       >
         {foods

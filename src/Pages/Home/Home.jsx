@@ -33,7 +33,7 @@ const Home = () => {
       <div className="mt-16 text-center">
         <h2 className="text-4xl font-semibold">Featured Foods</h2>
       </div>
-      <div className="grid grid-cols-3 gap-6 my-10">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-6 my-10">
         {limitedFoods.map((food) => (
           <Food food={food} key={food._id}></Food>
         ))}

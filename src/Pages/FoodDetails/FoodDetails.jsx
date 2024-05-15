@@ -7,9 +7,17 @@ import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
 
 const FoodDetails = () => {
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
   const food = useLoaderData();
   const [request, setRequest] = useState(null);
+
+  if (loading) {
+    return (
+      <div className="min-h-[80vh] text-center">
+        <span className="loading loading-ring w-28"></span>
+      </div>
+    );
+  }
 
   const options = { day: "numeric", month: "long", year: "numeric" };
   const formattedDate = new Intl.DateTimeFormat("en-GB", options).format(
@@ -149,8 +157,8 @@ const FoodDetails = () => {
                               </div>
 
                               <div className=" ">
-                                <div>{user.displayName}</div>
-                                <div>{user.email}</div>
+                                <div>{user?.displayName}</div>
+                                <div>{user?.email}</div>
                               </div>
                             </div>
                           </div>

@@ -77,9 +77,9 @@ const AddFood = () => {
       </Helmet>
       <div className="p-6 bg-amber-200">
         <h2 className="text-center text-4xl font-semibold mb-6">Add Food</h2>
-        <form onSubmit={handleAddFood} className="flex gap-8">
+        <form onSubmit={handleAddFood} className="md:flex gap-8">
           <div>
-            <div className="form-control  w-96">
+            <div className="form-control  lg:w-96">
               <label className="label">
                 <span className="label-text">Food Name</span>
               </label>
@@ -91,7 +91,7 @@ const AddFood = () => {
                 required
               />
             </div>
-            <div className="form-control  w-96">
+            <div className="form-control  lg:w-96">
               <label className="label">
                 <span className="label-text">Photo URL</span>
               </label>
@@ -103,7 +103,7 @@ const AddFood = () => {
                 required
               />
             </div>
-            <div className="form-control  w-96">
+            <div className="form-control  lg:w-96">
               <label className="label">
                 <span className="label-text">Pickup Location</span>
               </label>
@@ -115,7 +115,7 @@ const AddFood = () => {
                 required
               />
             </div>
-            <div className=" w-96 flex gap-6 items-center">
+            <div className=" lg:w-96 flex gap-6 items-center">
               <div className="form-control w-44 ">
                 <label className="label">
                   <span className="label-text">Quantity</span>
@@ -144,7 +144,7 @@ const AddFood = () => {
             </div>
           </div>
           <div>
-            <div className="form-control w-96">
+            <div className="form-control lg:w-96">
               <label className="label">
                 <span className="label-text">Additional Notes</span>
               </label>
@@ -154,7 +154,7 @@ const AddFood = () => {
                 name="notes"
               ></textarea>
             </div>
-            <div className="mt-2 w-96">
+            <div className="mt-2 lg:w-96">
               <label className="label">
                 <span className="label-text">Status</span>
               </label>

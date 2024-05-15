@@ -5,17 +5,23 @@ import { CiEdit } from "react-icons/ci";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { set } from "firebase/database";
 
 const ManageMyFoods = () => {
   const { user } = useContext(AuthContext);
   const { email } = user;
   const [myFoods, setMyFoods] = useState([]);
+  const axiosSecure = useAxiosSecure();
+
+  const url = `/my-foods/${email}`;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/my-foods/${email}`)
-      .then((res) => res.json())
-      .then((data) => setMyFoods(data));
-  }, [email]);
+    // fetch(`http://localhost:5000/my-foods/${email}`, { credentials: "include" })
+    //   .then((res) => res.json())
+    //   .then((data) => setMyFoods(data));
+    axiosSecure.get(url).then((res) => setMyFoods(res.data));
+  }, [url, axiosSecure]);
 
   const handleDelete = (_id) => {
     Swal.fire({
@@ -63,7 +69,7 @@ const ManageMyFoods = () => {
   };
 
   return (
-    <div className="min-h[80vh]">
+    <div className="min-h-[50vh]">
       <Helmet>
         <title>Manage Food || Nourish4All</title>
       </Helmet>

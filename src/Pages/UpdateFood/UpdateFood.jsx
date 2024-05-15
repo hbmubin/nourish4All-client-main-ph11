@@ -60,9 +60,9 @@ const UpdateFood = () => {
       </Helmet>
       <div className="p-6 bg-amber-200">
         <h2 className="text-center text-4xl font-semibold mb-6">Update Food</h2>
-        <form onSubmit={handleUpdateFood} className="flex gap-8">
+        <form onSubmit={handleUpdateFood} className="md:flex gap-8">
           <div>
-            <div className="form-control  w-96">
+            <div className="form-control  lg:w-96">
               <label className="label">
                 <span className="label-text">Food Name</span>
               </label>
@@ -74,7 +74,7 @@ const UpdateFood = () => {
                 required
               />
             </div>
-            <div className="form-control  w-96">
+            <div className="form-control  lg:w-96">
               <label className="label">
                 <span className="label-text">Photo URL</span>
               </label>
@@ -86,7 +86,7 @@ const UpdateFood = () => {
                 required
               />
             </div>
-            <div className="form-control  w-96">
+            <div className="form-control  lg:w-96">
               <label className="label">
                 <span className="label-text">Pickup Location</span>
               </label>
@@ -98,7 +98,7 @@ const UpdateFood = () => {
                 required
               />
             </div>
-            <div className=" w-96 flex gap-6 items-center">
+            <div className=" lg:w-96 flex gap-6 items-center">
               <div className="form-control w-44 ">
                 <label className="label">
                   <span className="label-text">Quantity</span>
@@ -126,7 +126,7 @@ const UpdateFood = () => {
             </div>
           </div>
           <div>
-            <div className="form-control w-96">
+            <div className="form-control lg:w-96">
               <label className="label">
                 <span className="label-text">Additional Notes</span>
               </label>
