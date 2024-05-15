@@ -31,7 +31,6 @@ const MyFoodRequest = () => {
         <table className="table table-zebra">
           <thead>
             <tr>
-              <th className="md:block hidden"></th>
               <th className="md:block hidden">Food Name</th>
               <th>Donor Name</th>
               <th>Pickup Location</th>
@@ -40,9 +39,8 @@ const MyFoodRequest = () => {
             </tr>
           </thead>
           <tbody>
-            {myFoodRequest.map((food, idx) => (
+            {myFoodRequest.map((food) => (
               <tr key={food._id}>
-                <th className="md:block hidden">{idx + 1}</th>
                 <td className="md:block hidden">{food.foodName}</td>
                 <td>{food.donor.name}</td>
                 <td>{food.pickupLocation}</td>

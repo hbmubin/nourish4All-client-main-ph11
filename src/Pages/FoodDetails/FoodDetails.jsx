@@ -72,7 +72,7 @@ const FoodDetails = () => {
             className="block max-w-sm gap-3 mx-auto sm:max-w-full group cursor-default lg:grid lg:grid-cols-12 bg-amber-200"
           >
             <img
-              src="https://source.unsplash.com/random/480x360"
+              src={food.foodImage}
               className="object-cover w-full h-64 rounded sm:h-96 lg:col-span-7 dark:bg-gray-500"
             />
             <div className="p-6 lg:col-span-5 ">
@@ -109,10 +109,7 @@ const FoodDetails = () => {
                       >
                         <div className=" flex flex-col font-semibold">
                           <div className="border-2 w-[50%] mb-4">
-                            <img
-                              className=""
-                              src="https://source.unsplash.com/random/480x360"
-                            />
+                            <img className="" src={food.foodImage} />
                           </div>
                           <div className="text-2xl font-semibold">
                             {food.foodName}

@@ -26,7 +26,7 @@ const Food = ({ food }) => {
       className="shadow-sm border-[1px] bg-amber-300"
     >
       <div className="">
-        <img src="https://i.ibb.co/DMmNXfs/rangamatijpeg.jpg" />
+        <img src={foodImage} />
       </div>
       <div className="p-4 flex flex-col font-semibold">
         <div className="text-2xl font-semibold">{foodName}</div>
@@ -55,10 +55,7 @@ const Food = ({ food }) => {
           <div className="flex justify-between items-center ">
             <div className="flex items-center gap-4 bg-amber-200 py-2 px-4  ">
               <div className=" w-16">
-                <img
-                  className="avatar"
-                  src="https://i.ibb.co/DMmNXfs/rangamatijpeg.jpg"
-                />
+                <img className="avatar" src={donatorImage} />
               </div>
               <div>{name}</div>
             </div>
