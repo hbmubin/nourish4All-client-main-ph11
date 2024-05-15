@@ -23,12 +23,12 @@ const Food = ({ food }) => {
       initial={{ opacity: 0, translateY: -30 }}
       animate={{ opacity: 1, translateY: 0 }}
       transition={{ duration: 1 }}
-      className="shadow-sm border-[1px] bg-amber-300"
+      className="shadow-sm border-[1px] flex flex-col bg-amber-300"
     >
       <div className="">
         <img src={foodImage} />
       </div>
-      <div className="p-4 flex flex-col font-semibold">
+      <div className="p-4 flex-grow flex flex-col font-semibold">
         <div className="text-2xl font-semibold">{foodName}</div>
         <p className="text-stone-600  mb-3">{additionalNotes}</p>
 
@@ -50,9 +50,9 @@ const Food = ({ food }) => {
           </span>
           <div className="ml-1"> Expired Date : {expiredDateTime}</div>
         </div>
-        <div className=" ">
+        <div className=" flex flex-col justify-end flex-grow">
           <div className="font-semibold text-neutral-700">Donor</div>
-          <div className="flex justify-between items-center ">
+          <div className="flex  justify-between items-center ">
             <div className="flex items-center gap-4 bg-amber-200 py-2 px-4  ">
               <div className=" w-16">
                 <img className="avatar" src={donatorImage} />

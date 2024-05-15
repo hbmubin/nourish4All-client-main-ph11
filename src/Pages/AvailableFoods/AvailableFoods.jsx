@@ -17,8 +17,8 @@ const AvailableFoods = () => {
     fetch(
       `${
         sortBy == false
-          ? "http://localhost:5000/foods"
-          : "http://localhost:5000/foods-sortby"
+          ? "https://nourisg4all-server-assign-11.vercel.app/foods"
+          : "https://nourisg4all-server-assign-11.vercel.app/foods-sortby"
       }`
     )
       .then((res) => res.json())

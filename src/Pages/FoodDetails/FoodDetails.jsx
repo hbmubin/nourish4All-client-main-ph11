@@ -38,13 +38,16 @@ const FoodDetails = () => {
       benefactorName,
       benefactorEmail,
     };
-    fetch(`http://localhost:5000/request/${food._id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(requestedFood),
-    })
+    fetch(
+      `https://nourisg4all-server-assign-11.vercel.app/request/${food._id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(requestedFood),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         e.target.reset();

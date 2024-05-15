@@ -54,13 +54,17 @@ const router = createBrowserRouter([
         path: "/food/:id",
         element: <FoodDetails></FoodDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/food/${params.id}`),
+          fetch(
+            `https://nourisg4all-server-assign-11.vercel.app/food/${params.id}`
+          ),
       },
       {
         path: "/update-food/:id",
         element: <UpdateFood></UpdateFood>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/food/${params.id}`),
+          fetch(
+            `https://nourisg4all-server-assign-11.vercel.app/food/${params.id}`
+          ),
       },
       {
         path: "/login",

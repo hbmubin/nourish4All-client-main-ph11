@@ -10,7 +10,7 @@ const Home = () => {
   const [foods, setFoods] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/foods")
+    fetch("https://nourisg4all-server-assign-11.vercel.app/foods")
       .then((res) => res.json())
       .then((data) => {
         const available = data.filter((food) => {

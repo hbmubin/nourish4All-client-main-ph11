@@ -47,7 +47,7 @@ const AddFood = () => {
       foodStatus,
       donor,
     };
-    fetch("http://localhost:5000/foods", {
+    fetch("https://nourisg4all-server-assign-11.vercel.app/foods", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -67,7 +67,7 @@ const AddFood = () => {
           });
         }
       });
-    console.log(newFood);
+    // console.log(newFood);
   };
 
   return (

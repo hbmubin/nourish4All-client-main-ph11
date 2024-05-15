@@ -32,7 +32,7 @@ const UpdateFood = () => {
       expiredDateTime,
       additionalNotes,
     };
-    fetch(`http://localhost:5000/food/${food._id}`, {
+    fetch(`https://nourisg4all-server-assign-11.vercel.app/food/${food._id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

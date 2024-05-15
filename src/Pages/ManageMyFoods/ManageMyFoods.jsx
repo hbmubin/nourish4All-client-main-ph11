@@ -17,7 +17,7 @@ const ManageMyFoods = () => {
   const url = `/my-foods/${email}`;
 
   useEffect(() => {
-    // fetch(`http://localhost:5000/my-foods/${email}`, { credentials: "include" })
+    // fetch(`https://nourisg4all-server-assign-11.vercel.app/my-foods/${email}`, { credentials: "include" })
     //   .then((res) => res.json())
     //   .then((data) => setMyFoods(data));
     axiosSecure.get(url).then((res) => setMyFoods(res.data));
@@ -34,7 +34,7 @@ const ManageMyFoods = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/foods/${_id}`, {
+        fetch(`https://nourisg4all-server-assign-11.vercel.app/foods/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -57,7 +57,7 @@ const ManageMyFoods = () => {
             }
           })
           .catch((error) => {
-            console.log(error);
+            // console.log(error);
             Swal.fire({
               title: "Error!",
               text: "Failed to delete the food. Please try again later.",
