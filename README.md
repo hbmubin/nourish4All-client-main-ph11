@@ -30,4 +30,27 @@ https://nourish4all-assign-11.web.app
 - **JWT**: Authentication.
 - **Axios**: API requests.
 
+## Tutorial: How to Clone and Run Nourish4All
+
+### Prerequisites
+Before you begin, ensure you have the following installed on your system:
+- **Node.js**: [Install](https://nodejs.org/)
+- **Git**: [Install](https://git-scm.com/)
+
+### Steps
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/hbmubin/nourish4All-client-main-ph11.git
+2. **Navigate to the Project Directory**:
+      ```bash
+   cd green-shelter
+4. **Install Dependencies**:
+    ```bash
+   npm install
+5. **Run the Project**:
+    ```bash
+    npm start
+## Thanks
+
 ## Thanks
