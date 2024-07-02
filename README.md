@@ -50,6 +50,6 @@ Before you begin, ensure you have the following installed on your system:
    npm install
 5. **Run the Project**:
     ```bash
-    npm start
+    npm run dev
 ## Thanks
 
