@@ -44,7 +44,7 @@ Before you begin, ensure you have the following installed on your system:
    git clone https://github.com/hbmubin/nourish4All-client-main-ph11.git
 2. **Navigate to the Project Directory**:
       ```bash
-   cd green-shelter
+   cd nourish4All-client-main-ph11
 4. **Install Dependencies**:
     ```bash
    npm install
